@@ -3,7 +3,7 @@ import java.util.*;
 int monthDays = 31;
 String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 int currentMonth;
-int currentYear;
+int currentYear = 2020;
 float plannerWidth = 0;
 
 float margin = 50;
@@ -26,7 +26,7 @@ void draw(){
  String monthName = "July";
   int daysInMonth = monthDays;
   int dayOfMonth = -1;
- 
+  
   int startingDayOfMonth = 3;
   
   //Celendar Metrics
