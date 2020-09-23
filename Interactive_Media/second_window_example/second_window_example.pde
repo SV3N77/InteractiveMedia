@@ -12,7 +12,6 @@ void mousePressed() {
   runSecondWindow();
 }
 
-
 void runSecondWindow() {
   String[] args = {
     "test" //First argument seems to be eaten...?
