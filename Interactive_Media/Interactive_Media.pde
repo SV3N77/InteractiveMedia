@@ -34,7 +34,7 @@ void draw(){
   margin = 50;
   topLabelMargin = 100;
   calendarWidth = width - plannerWidth - (margin * 2);
-  calendarHeight = height - (margin * 2) - topLabelMargin;
+  calendarHeight = height - (margin *3) - topLabelMargin;
   spacing = 5;
   float boxWidth = (calendarWidth - (6 * spacing)) / 7;
   float boxHeight = (calendarHeight - ((numRows - 1) * spacing)) / numRows;
