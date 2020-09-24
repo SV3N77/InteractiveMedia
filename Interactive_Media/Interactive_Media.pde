@@ -6,7 +6,7 @@ String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Fr
 int currentMonth;
 int currentYear = 2020;
 float plannerWidth = 0;
-
+int rowCounter = 0;
 float margin = 50;
 float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
@@ -23,7 +23,7 @@ color rectHighlight, circleHighlight;
 color currentColour;
 
 int mousePosition;
-
+Table table1;
 //Gifs
 WI wi;
 
@@ -141,11 +141,21 @@ void draw(){
   if(screen == 1){
     background(255,192,203);
     rect(680,580,20,20);
+    table1 = loadTable("1.csv", "header");
+    for (TableRow row : table1. rows()){
+      if(rowCounter < table1.getRowCount()){
+        String date = row.getString("date");
+        String temp= row.getString("temp");
+        rowCounter++;
+        println(date+" "+temp);
+      }
+    }
   }
   if(screen == 2){
     background(255);
     rect(680,580,20,20);
   }
+
   update();
 }
 
