@@ -150,12 +150,11 @@ void draw(){
           String temp= row.getString("temp");
           rowCounter++;
           println(date+" "+temp);
-        }
       }
     }
   }
- 
-
+    }
+   
   update();
 }
 
