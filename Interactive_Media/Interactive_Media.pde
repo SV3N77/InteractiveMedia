@@ -28,7 +28,7 @@ int mousePosition;
 WI wi;
 
 float posX = 200, posY = 400;
-float iconX = 100, iconY = iconX;
+float iconX = 45, iconY = iconX;
 int frameSpeed = 10;
 
 void setup(){
@@ -111,32 +111,32 @@ void draw(){
       rect(x, y, boxWidth, boxHeight);
       
       fill(0);
-      textSize(24);
-      
-      text(i + 1, x + boxWidth / 2, y + boxHeight / 2);
-      
-      textSize(9);
-      
-      xoff = (xoff + 1) % 7;
-      if(xoff == 0) yoff ++;
-    }
+    textSize(16);
+    textAlign(RIGHT, BOTTOM);
+    text(i + 1, x + boxWidth / 3, y + boxHeight / 3);
     
-    noStroke();
+    textSize(9);
     
-    if(plannerWidth > 50) {
-      fill(51);
-      
-      rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
-      
-      stroke(0);
-      fill(204);
-      
-      rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
-    }
+    xoff = (xoff + 1) % 7;
+    if(xoff == 0) yoff ++;
+  }
+  
+  noStroke();
+  
+  if(plannerWidth > 50) {
+    fill(51);
+    
+    rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    
+    stroke(0);
+    fill(204);
+    
+    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+  }
     rect(680,580,20,20);
-    image(wi.sunny[frameCount%19], posX/2, posY/2, iconX, iconY);
-    image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
-    image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
+    image(wi.sunny[frameCount%19], posX+130, posY/2 -25, iconX, iconY);
+    //image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
+    //image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
   }
   if(screen == 1){
     background(255,192,203);
