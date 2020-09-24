@@ -11,6 +11,16 @@ float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
 float calendarHeight = height - (margin * 2) - topLabelMargin;
 float spacing = 5;
+float [] dayX;
+float [] dayY;
+boolean [] dayOver;
+float dayWidth = 0;
+float dayHeight = 0;
+color rectHighlight, circleHighlight;
+color currentColour;
+
+int mousePosition;
+
 /*//Gifs 
 PImage[] sunny = new PImage[19];
 PImage[] rainy = new PImage[4];
@@ -41,17 +51,6 @@ void draw(){
   int dayOfMonth = -1;
   
   int startingDayOfMonth = 3;
-  
-  float [] dayX;
-float [] dayY;
-boolean [] dayOver;
-float dayWidth = 0;
-float dayHeight = 0;
-color rectHighlight, circleHighlight;
-color currentColour;
-
-int mousePosition;
-
   
   //Celendar Metrics
   int numRows = ceil((startingDayOfMonth + daysInMonth) / 7);
@@ -124,7 +123,7 @@ int mousePosition;
     stroke(0);
     fill(204);
     
-    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);}
   }
 /*
 void setup() {
