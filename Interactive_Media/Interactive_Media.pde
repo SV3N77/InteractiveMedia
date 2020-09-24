@@ -134,8 +134,25 @@ void draw(){
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
     rect(680,580,20,20);
-    image(wi.sunny[frameCount%19], posX+130, posY/2 -25, iconX, iconY);
-    //image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
+    image(wi.sunny[frameCount%19], posX+130, posY/2 -25, iconX, iconY); //Day 1 icon
+    image(wi.sunny[frameCount%19], posX+135+boxWidth, posY/2 -25, iconX, iconY); //Day 2 icon
+    image(wi.sunny[frameCount%19], posX+140 + 2*boxWidth, posY/2 -25, iconX, iconY); //Day 3 icon
+    image(wi.sunny[frameCount%19], posX+145 + 3*boxWidth, posY/2 -25, iconX, iconY); //Day 4 icon
+    image(wi.sunny[frameCount%19], posX/2 - 30, posY/2 -15 + boxHeight, iconX, iconY); //Day 5 icon
+    image(wi.sunny[frameCount%19], posX/2 - 25 + boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 6 icon
+    image(wi.rainy[frameCount%4], posX/2 - 20 + 2*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 7 icon
+    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 8 icon
+    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 9 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 10 icon
+    image(wi.sunny[frameCount%19], posX/2 + 6*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 11 icon
+    image(wi.sunny[frameCount%19], posX/2 - 30, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 12 icon
+    image(wi.rainy[frameCount%4], posX/2 - 25 + boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 13 icon
+    image(wi.thunderstorm[frameCount%10], posX/2 - 20 + 2*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 14 icon
+    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 15 icon
+    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 16 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 17 icon
+    image(wi.sunny[frameCount%19], posX/2 + 6*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 18 icon
+    
     //image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
   }
   if(screen == 1){
