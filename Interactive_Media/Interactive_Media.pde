@@ -136,6 +136,7 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
+<<<<<<< HEAD
 
 
 void setup() {
@@ -220,4 +221,6 @@ boolean overDay(float x, float y, float width, float height)  {
   } else {
     return false;
   }
+=======
+>>>>>>> parent of 74b9157... Merge branch 'Ivan' into Development
 }
