@@ -1,5 +1,6 @@
 import java.util.*;
 //Initialise variables
+int screen = 0;
 int monthDays = 31;
 String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 int currentMonth;
@@ -54,69 +55,75 @@ void draw(){
   float boxHeight = (calendarHeight - ((numRows - 1) * spacing)) / numRows;
   dayWidth = boxWidth;
   dayHeight = boxHeight;
+  if(screen ==0){
   
-  background(102);
-  //background(currentColour);
-  fill(255);
-  stroke(204);
-  textSize(42);
-  
-  text(monthName + " " + currentYear, (width - plannerWidth) / 2, margin + topLabelMargin / 10 * 3);
-  fill(204);
-  textSize(12);
-  
-  for(int i = 0; i < weekDays.length; i ++)
-    text(weekDays[i], margin + (spacing * i) + (boxWidth * i) + boxWidth / 2, margin + topLabelMargin / 10 * 7);
-  
-  line(margin, margin + topLabelMargin / 10 * 8.5, width - plannerWidth - margin, margin + topLabelMargin / 10 * 8.5);
-  
-  stroke(0);
-  float xoff = startingDayOfMonth;
-  float yoff = 0;
-  for(int i = 0; i < daysInMonth; i ++) {
+    background(102);
+    //background(currentColour);
+    fill(255);
+    stroke(204);
+    textSize(42);
     
-    float x = margin + (spacing * xoff) + (boxWidth * xoff);
-    float y = margin + topLabelMargin + (spacing * yoff) + (boxHeight * yoff);
+    text(monthName + " " + currentYear, (width - plannerWidth) / 2, margin + topLabelMargin / 10 * 3);
+    fill(204);
+    textSize(12);
     
-    dayX[i] = x + 3;
-    dayY[i] = y + 3;
-    dayOver[i] = false;
+    for(int i = 0; i < weekDays.length; i ++)
+      text(weekDays[i], margin + (spacing * i) + (boxWidth * i) + boxWidth / 2, margin + topLabelMargin / 10 * 7);
+    
+    line(margin, margin + topLabelMargin / 10 * 8.5, width - plannerWidth - margin, margin + topLabelMargin / 10 * 8.5);
+    
+    stroke(0);
+    float xoff = startingDayOfMonth;
+    float yoff = 0;
+    for(int i = 0; i < daysInMonth; i ++) {
+      
+      float x = margin + (spacing * xoff) + (boxWidth * xoff);
+      float y = margin + topLabelMargin + (spacing * yoff) + (boxHeight * yoff);
+      
+      dayX[i] = x + 3;
+      dayY[i] = y + 3;
+      dayOver[i] = false;
+      
+      noStroke();
+      fill(51);
+      
+      rect(x + 3, y + 3, boxWidth, boxHeight);
+      
+      stroke(0);
+      if((i + 1) == dayOfMonth) fill(255);
+      else fill(204);
+      
+      rect(x, y, boxWidth, boxHeight);
+      
+      fill(0);
+      textSize(24);
+      
+      text(i + 1, x + boxWidth / 2, y + boxHeight / 2);
+      
+      textSize(9);
+      
+      xoff = (xoff + 1) % 7;
+      if(xoff == 0) yoff ++;
+    }
     
     noStroke();
-    fill(51);
     
-    rect(x + 3, y + 3, boxWidth, boxHeight);
-    
-    stroke(0);
-    if((i + 1) == dayOfMonth) fill(255);
-    else fill(204);
-    
-    rect(x, y, boxWidth, boxHeight);
-    
-    fill(0);
-    textSize(24);
-    
-    text(i + 1, x + boxWidth / 2, y + boxHeight / 2);
-    
-    textSize(9);
-    
-    xoff = (xoff + 1) % 7;
-    if(xoff == 0) yoff ++;
-  }
-  
-  noStroke();
-  
-  if(plannerWidth > 50) {
-    fill(51);
-    
-    rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
-    
-    stroke(0);
-    fill(204);
-    
-    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    if(plannerWidth > 50) {
+      fill(51);
+      
+      rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+      
+      stroke(0);
+      fill(204);
+      
+      rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    }
   }
     update();
+    if(screen == 1){
+      
+    }
+    
 }
 
 void mousePressed() {
@@ -131,6 +138,7 @@ void update() {
   for(int i = 0; i < monthDays; i ++){
     if ( overDay(dayX[i], dayY[i], dayWidth, dayHeight) ) {
       dayOver[i] = true;
+      screen = i;
     }
   }
 }
