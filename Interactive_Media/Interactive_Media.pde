@@ -21,7 +21,7 @@ color currentColour;
 
 int mousePosition;
 
-/*//Gifs 
+//Gifs 
 PImage[] sunny = new PImage[19];
 PImage[] rainy = new PImage[4];
 PImage[] thunderstorm = new PImage[10];
@@ -29,7 +29,7 @@ PImage[] thunderstorm = new PImage[10];
 float posX = 200, posY = 400;
 float iconX = 100, iconY = iconX;
 int frameSpeed = 10;
-*/
+
 
 void setup(){
   size(700, 600);
@@ -43,6 +43,10 @@ void setup(){
   for(int i = 0; i < monthDays; i ++){
     dayOver[i] = false;
   }
+  frameRate(frameSpeed);
+  sunnyIcon();
+  rainyIcon();
+  thunderIcon();
 }
 
 void draw(){
@@ -125,24 +129,24 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
-  update();
-}
-/*
-void setup() {
-  size(500, 500);
-  smooth();
-  frameRate(frameSpeed);
-  sunnyIcon();
-  rainyIcon();
-  thunderIcon();
-}
-
-void draw() {
-  background(0);
   image(sunny[frameCount%19], posX/2, posY/2, iconX, iconY);
   image(rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
   image(thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
+  update();
 }
+
+//void setup() {
+//  size(500, 500);
+//  smooth();
+  
+//}
+
+//void draw() {
+//  background(0);
+//  image(sunny[frameCount%19], posX/2, posY/2, iconX, iconY);
+//  image(rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
+//  image(thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
+//}
 
 void sunnyIcon() {
   sunny[0] = loadImage("sunny/sunny3.gif");
@@ -186,7 +190,7 @@ void thunderIcon() {
   thunderstorm[9] = loadImage("thunderstorm/thunderstorm9.gif");
     update();
 }
-*/
+
 
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
