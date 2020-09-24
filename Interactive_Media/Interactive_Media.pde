@@ -11,7 +11,7 @@ float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
 float calendarHeight = height - (margin * 2) - topLabelMargin;
 float spacing = 5;
-//Gifs 
+/*//Gifs 
 PImage[] sunny = new PImage[19];
 PImage[] rainy = new PImage[4];
 PImage[] thunderstorm = new PImage[10];
@@ -19,28 +19,7 @@ PImage[] thunderstorm = new PImage[10];
 float posX = 200, posY = 400;
 float iconX = 100, iconY = iconX;
 int frameSpeed = 10;
-
-void setup(){
-  size(700, 600);
-  smooth();
-  
-  textFont(createFont("Georgia", 12));
-  textAlign(CENTER, CENTER);
-
-}
-
-void draw(){
-  
- String monthName = "July";
-float [] dayX;
-float [] dayY;
-boolean [] dayOver;
-float dayWidth = 0;
-float dayHeight = 0;
-color rectHighlight, circleHighlight;
-color currentColour;
-
-int mousePosition;
+*/
 
 void setup(){
   size(700, 600);
@@ -62,6 +41,17 @@ void draw(){
   int dayOfMonth = -1;
   
   int startingDayOfMonth = 3;
+  
+  float [] dayX;
+float [] dayY;
+boolean [] dayOver;
+float dayWidth = 0;
+float dayHeight = 0;
+color rectHighlight, circleHighlight;
+color currentColour;
+
+int mousePosition;
+
   
   //Celendar Metrics
   int numRows = ceil((startingDayOfMonth + daysInMonth) / 7);
@@ -136,9 +126,7 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
-<<<<<<< HEAD
-
-
+/*
 void setup() {
   size(500, 500);
   smooth();
@@ -197,6 +185,7 @@ void thunderIcon() {
   thunderstorm[9] = loadImage("thunderstorm/thunderstorm9.gif");
     update();
 }
+*/
 
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
@@ -221,6 +210,4 @@ boolean overDay(float x, float y, float width, float height)  {
   } else {
     return false;
   }
-=======
->>>>>>> parent of 74b9157... Merge branch 'Ivan' into Development
 }
