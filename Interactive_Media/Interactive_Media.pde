@@ -11,6 +11,14 @@ float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
 float calendarHeight = height - (margin * 2) - topLabelMargin;
 float spacing = 5;
+//Gifs 
+PImage[] sunny = new PImage[19];
+PImage[] rainy = new PImage[4];
+PImage[] thunderstorm = new PImage[10];
+
+float posX = 200, posY = 400;
+float iconX = 100, iconY = iconX;
+int frameSpeed = 10;
 
 void setup(){
   size(700, 600);
@@ -128,13 +136,7 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
-PImage[] sunny = new PImage[19];
-PImage[] rainy = new PImage[4];
-PImage[] thunderstorm = new PImage[10];
 
-float posX = 200, posY = 400;
-float iconX = 100, iconY = iconX;
-int frameSpeed = 10;
 
 void setup() {
   size(500, 500);
