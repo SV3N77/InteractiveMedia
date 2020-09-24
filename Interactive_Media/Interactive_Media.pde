@@ -123,8 +123,9 @@ void draw(){
     stroke(0);
     fill(204);
     
-    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);}
+    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
+}
 /*
 void setup() {
   size(500, 500);
