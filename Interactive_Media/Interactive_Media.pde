@@ -24,6 +24,32 @@ void setup(){
 void draw(){
   
  String monthName = "July";
+float [] dayX;
+float [] dayY;
+boolean [] dayOver;
+float dayWidth = 0;
+float dayHeight = 0;
+color rectHighlight, circleHighlight;
+color currentColour;
+
+int mousePosition;
+
+void setup(){
+  size(700, 600);
+  smooth();
+  textFont(createFont("Georgia", 12));
+  textAlign(CENTER, CENTER);
+  
+  dayX = new float[31];
+  dayY = new float[31];
+  dayOver = new boolean[31];
+  for(int i = 0; i < monthDays; i ++){
+    dayOver[i] = false;
+  }
+}
+
+void draw(){
+  String monthName = "July";
   int daysInMonth = monthDays;
   int dayOfMonth = -1;
   
@@ -41,6 +67,12 @@ void draw(){
   
   background(102);
    fill(255);
+  dayWidth = boxWidth;
+  dayHeight = boxHeight;
+  
+  background(102);
+  //background(currentColour);
+  fill(255);
   stroke(204);
   textSize(42);
   
@@ -160,4 +192,30 @@ void thunderIcon() {
   thunderstorm[7] = loadImage("thunderstorm/thunderstorm8.gif");
   thunderstorm[8] = loadImage("thunderstorm/thunderstorm9.gif");
   thunderstorm[9] = loadImage("thunderstorm/thunderstorm9.gif");
+    update();
+}
+
+void mousePressed() {
+  for(int i = 0; i < monthDays; i ++){
+    if(dayOver[i]){
+      background(i*10, i*10, i*10);
+    }
+  }
+}
+
+void update() {
+  for(int i = 0; i < monthDays; i ++){
+    if ( overDay(dayX[i], dayY[i], dayWidth, dayHeight) ) {
+      dayOver[i] = true;
+    }
+  }
+}
+
+boolean overDay(float x, float y, float width, float height)  {
+  if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y && mouseY <= y+height) {
+    return true;
+  } else {
+    return false;
+  }
 }

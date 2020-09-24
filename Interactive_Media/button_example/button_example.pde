@@ -24,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-  update(mouseX, mouseY);
+  update();
   background(currentColor);
   
   if (rectOver) {
@@ -44,7 +44,7 @@ void draw() {
   ellipse(circleX, circleY, circleSize, circleSize);
 }
 
-void update(int x, int y) {
+void update() {
   if ( overCircle(circleX, circleY, circleSize) ) {
     circleOver = true;
     rectOver = false;
