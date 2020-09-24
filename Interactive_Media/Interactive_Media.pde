@@ -16,6 +16,7 @@ float spacing = 5;
 float [] dayX;
 float [] dayY;
 boolean [] dayOver;
+boolean homeOver;
 float dayWidth = 0;
 float dayHeight = 0;
 color rectHighlight, circleHighlight;
@@ -35,6 +36,7 @@ void setup(){
   for(int i = 0; i < monthDays; i ++){
     dayOver[i] = false;
   }
+  homeOver = false;
 }
 
 void draw(){
@@ -118,19 +120,28 @@ void draw(){
       
       rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
     }
+    rect(680,580,20,20);
   }
-    update();
-    if(screen == 1){
-      
-    }
-    
+  if(screen == 1){
+    background(255,192,203);
+    rect(680,580,20,20);
+  }
+  if(screen == 2){
+    background(0);
+    rect(680,580,20,20);
+  }
+  update();
 }
 
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
     if(dayOver[i]){
-      background(i*10, i*10, i*10);
+      //background(i*10, i*10, i*10);
+      screen = i+1;
     }
+  }
+  if(overDay(680,580,20,20)){
+    screen = 0;
   }
 }
 
@@ -138,9 +149,9 @@ void update() {
   for(int i = 0; i < monthDays; i ++){
     if ( overDay(dayX[i], dayY[i], dayWidth, dayHeight) ) {
       dayOver[i] = true;
-      screen = i;
     }
   }
+  
 }
 
 boolean overDay(float x, float y, float width, float height)  {
