@@ -6,7 +6,7 @@ String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Fr
 int currentMonth;
 int currentYear = 2020;
 float plannerWidth = 0;
-
+int rowCounter = 0;
 float margin = 50;
 float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
@@ -23,6 +23,7 @@ color rectHighlight, circleHighlight;
 color currentColour;
 
 int mousePosition;
+Table table;
 
 //Gifs
 WI wi;
@@ -165,15 +166,23 @@ void draw(){
     image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 29 icon
     image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 30 icon
     image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 31 icon
+
   }
-  if(screen == 1){
-    background(255,192,203);
-    rect(680,580,20,20);
-  }
-  if(screen == 2){
-    background(255);
-    rect(680,580,20,20);
-  }
+   for(int i = 1; i < daysInMonth; i ++){
+    if(screen == i){
+      background(255,192,203);
+      rect(680,580,20,20);
+      table = loadTable(i + ".csv", "header");
+      for (TableRow row : table.rows()){
+        if(rowCounter < table.getRowCount()){
+          String date = row.getString("date");
+          String temp= row.getString("temp");
+          rowCounter++;
+          println(date+" "+temp);
+        }
+      }
+    }
+   }
   update();
 }
 
