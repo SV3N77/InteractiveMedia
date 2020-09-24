@@ -125,6 +125,7 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
+  update();
 }
 /*
 void setup() {
