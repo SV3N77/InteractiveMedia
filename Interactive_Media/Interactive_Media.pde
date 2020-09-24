@@ -33,7 +33,7 @@ void setup(){
   size(700, 600);
   smooth();
   textFont(createFont("Georgia", 12));
-  textAlign(CENTER, CENTER);
+  
   
   dayX = new float[31];
   dayY = new float[31];
@@ -70,16 +70,13 @@ void draw(){
   dayWidth = boxWidth;
   dayHeight = boxHeight;
   
-  background(102);
-  //background(currentColour);
-  fill(255);
   stroke(204);
   textSize(42);
-  
+  textAlign(CENTER, CENTER);
   text(monthName + " " + currentYear, (width - plannerWidth) / 2, margin + topLabelMargin / 10 * 3);
   
   fill(204);
-  textSize(12);
+  textSize(14);
   
   for(int i = 0; i < weekDays.length; i ++)
     text(weekDays[i], margin + (spacing * i) + (boxWidth * i) + boxWidth / 2, margin + topLabelMargin / 10 * 7);
@@ -106,9 +103,9 @@ void draw(){
     rect(x, y, boxWidth, boxHeight);
     
     fill(0);
-    textSize(24);
-    
-    text(i + 1, x + boxWidth / 2, y + boxHeight / 2);
+    textSize(18);
+    textAlign(RIGHT, BOTTOM);
+    text(i + 1, x + boxWidth / 3, y + boxHeight / 3);
     
     textSize(9);
     
