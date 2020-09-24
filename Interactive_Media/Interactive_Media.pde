@@ -127,7 +127,7 @@ void draw(){
     rect(680,580,20,20);
   }
   if(screen == 2){
-    background(0);
+    background(255);
     rect(680,580,20,20);
   }
   update();
