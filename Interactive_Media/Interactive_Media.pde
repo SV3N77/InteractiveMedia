@@ -24,6 +24,9 @@ color currentColour;
 
 int mousePosition;
 
+//Gifs
+WI wi;
+
 void setup(){
   size(700, 600);
   smooth();
