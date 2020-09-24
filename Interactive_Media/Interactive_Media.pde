@@ -23,7 +23,8 @@ color rectHighlight, circleHighlight;
 color currentColour;
 
 int mousePosition;
-Table table1;
+Table table;
+
 //Gifs
 WI wi;
 
@@ -138,23 +139,22 @@ void draw(){
     //image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
     //image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
   }
-  if(screen == 1){
-    background(255,192,203);
-    rect(680,580,20,20);
-    table1 = loadTable("1.csv", "header");
-    for (TableRow row : table1. rows()){
-      if(rowCounter < table1.getRowCount()){
-        String date = row.getString("date");
-        String temp= row.getString("temp");
-        rowCounter++;
-        println(date+" "+temp);
+   for(int i = 1; i < daysInMonth; i ++){
+    if(screen == i){
+      background(255,192,203);
+      rect(680,580,20,20);
+      table = loadTable(i + ".csv", "header");
+      for (TableRow row : table.rows()){
+        if(rowCounter < table.getRowCount()){
+          String date = row.getString("date");
+          String temp= row.getString("temp");
+          rowCounter++;
+          println(date+" "+temp);
+        }
       }
     }
   }
-  if(screen == 2){
-    background(255);
-    rect(680,580,20,20);
-  }
+ 
 
   update();
 }
