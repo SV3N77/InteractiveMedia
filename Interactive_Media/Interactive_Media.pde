@@ -50,6 +50,7 @@ void setup(){
   wi.sunnyIcon();
   wi.rainyIcon();
   wi.thunderIcon();
+  wi.clearIcon();
 }
 
 void draw(){
@@ -136,7 +137,8 @@ void draw(){
     rect(680,580,20,20);
     image(wi.sunny[frameCount%19], posX/2, posY/2, iconX, iconY);
     image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
-    image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
+    image(wi.thunderstorm[frameCount%10], posX/2, posY/4, iconX, iconY);
+    image(wi.clear[frameCount%14], posX+100, posY/4, iconX, iconY);
   }
   if(screen == 1){
     background(255,192,203);
