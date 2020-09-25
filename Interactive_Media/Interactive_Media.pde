@@ -45,13 +45,6 @@ float posX = 200, posY = 400;
 float iconX = 45, iconY = iconX;
 int frameSpeed = 10;
 
-//Gifs
-WI wi;
-
-float posX = 200, posY = 400;
-float iconX = 100, iconY = iconX;
-int frameSpeed = 10;
-
 void setup(){
   size(700, 600);
   smooth();
@@ -132,54 +125,103 @@ void draw(){
       rect(x, y, boxWidth, boxHeight);
       
       fill(0);
-      textSize(24);
-      
-      text(i + 1, x + boxWidth / 2, y + boxHeight / 2);
-      
-      textSize(9);
-      
-      xoff = (xoff + 1) % 7;
-      if(xoff == 0) yoff ++;
-    }
+    textSize(16);
+    textAlign(RIGHT, BOTTOM);
+    text(i + 1, x + boxWidth / 3, y + boxHeight / 3);
     
-    noStroke();
+    textSize(9);
     
-    if(plannerWidth > 50) {
-      fill(51);
-      
-      rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
-      
-      stroke(0);
-      fill(204);
-      
-      rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    xoff = (xoff + 1) % 7;
+    if(xoff == 0) yoff ++;
+  }
+  
+  noStroke();
+  
+  if(plannerWidth > 50) {
+    fill(51);
+    
+    rect(width - plannerWidth + 3, margin + topLabelMargin + 3, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+    
+    stroke(0);
+    fill(204);
+    
+    rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
+  }
+  fill(0);
+  rect(10,10,47,27);
+  fill(255);
+  rect(10,10,45,25);
+  textSize(12);
+  fill(0);
+  text("Home", 50,30);
+  
+    image(wi.clear[frameCount%14], posX+130, posY/2 -25, iconX, iconY); //Day 1 icon
+    image(wi.clear[frameCount%14], posX+135+boxWidth, posY/2 -25, iconX, iconY); //Day 2 icon
+    image(wi.clear[frameCount%14], posX+140 + 2*boxWidth, posY/2 -25, iconX, iconY); //Day 3 icon
+    image(wi.sunny[frameCount%19], posX+145 + 3*boxWidth, posY/2 -25, iconX, iconY); //Day 4 icon
+    image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -15 + boxHeight, iconX, iconY); //Day 5 icon
+    image(wi.sunny[frameCount%19], posX/2 - 25 + boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 6 icon
+    image(wi.rainy[frameCount%4], posX/2 - 20 + 2*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 7 icon
+    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 8 icon
+    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 9 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 10 icon
+    image(wi.sunny[frameCount%19], posX/2 + 6*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 11 icon
+    image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 12 icon
+    image(wi.rainy[frameCount%4], posX/2 - 25 + boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 13 icon
+    image(wi.thunderstorm[frameCount%10], posX/2 - 20 + 2*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 14 icon
+    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 15 icon
+    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 16 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 17 icon
+    image(wi.clear[frameCount%14], posX/2 + 6*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 18 icon
+    image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 19 icon
+    image(wi.clear[frameCount%14], posX/2 - 25 + boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 20 icon
+    image(wi.sunny[frameCount%19], posX/2 - 20 + 2*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 21 icon
+    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 22 icon
+    image(wi.clear[frameCount%14], posX/2 - 10 + 4*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 23 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 24 icon
+    image(wi.sunny[frameCount%19], posX/2 + 6*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 25 icon
+    image(wi.thunderstorm[frameCount%10], posX/2 -30, posY/2 + 4*boxHeight, iconX, iconY); //Day 26 icon
+    image(wi.rainy[frameCount%4], posX/2 - 25 + boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 27 icon
+    image(wi.rainy[frameCount%4], posX/2 - 20 + 2*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 28 icon
+    image(wi.clear[frameCount%14], posX/2 - 15 + 3*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 29 icon
+    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 30 icon
+    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 31 icon
+
+  }
+   for(int i = 1; i < daysInMonth; i ++){
+    if(screen == i){
+      background(255,192,203);
+      fill(0);
+      rect(10,10,47,27);
+      fill(255);
+      rect(10,10,45,25);
+      textSize(12);
+      fill(0);
+      text("Home", 50,30);
+      table = loadTable(i + ".csv", "header");
+      for (TableRow row : table.rows()){
+        if(rowCounter < table.getRowCount()){
+          String date = row.getString("date");
+          String temp= row.getString("temp");
+          rowCounter++;
+          println(date+" "+temp);
+        }
+      }
     }
-    rect(680,580,20,20);
-    image(wi.sunny[frameCount%19], posX/2, posY/2, iconX, iconY);
-    image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
-    image(wi.thunderstorm[frameCount%10], posX/2, posY/4, iconX, iconY);
-    image(wi.clear[frameCount%14], posX+100, posY/4, iconX, iconY);
-  }
-  if(screen == 1){
-    background(255,192,203);
-    rect(680,580,20,20);
-  }
-  if(screen == 2){
-    background(255);
-    rect(680,580,20,20);
-  }
+   }
   update();
 }
 
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
     if(dayOver[i]){
-      //background(i*10, i*10, i*10);
       screen = i+1;
+      sound();
     }
   }
-  if(overDay(680,580,20,20)){
+  if(overDay(10,10,45,25)){
     screen = 0;
+    sound();
   }
 }
 
@@ -189,7 +231,6 @@ void update() {
       dayOver[i] = true;
     }
   }
-  
 }
 
 void sound(){
