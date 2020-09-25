@@ -31,6 +31,12 @@ float dayHeight = 0;
 color rectHighlight, circleHighlight;
 color currentColour;
 
+float[] Temp;
+float minTemp, maxTemp;
+int[] time;
+
+float X1, Y1, X2, Y2;
+
 int mousePosition;
 Table table;
 
@@ -86,11 +92,13 @@ void draw(){
   dayWidth = boxWidth;
   dayHeight = boxHeight;
   if(screen ==0){
-  
+    textAlign(CENTER, CENTER);
+    rectMode(CORNER);
     background(102);
     fill(255);
     stroke(204);
     textSize(42);
+    strokeWeight(3);
     
     text(monthName + " " + currentYear, (width - plannerWidth) / 2, margin + topLabelMargin / 10 * 3);
     fill(204);
@@ -188,27 +196,55 @@ void draw(){
     image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 + 4*boxHeight, iconX, iconY); //Day 31 icon
 
   }
-   for(int i = 1; i < daysInMonth; i ++){
+  
+  for(int i = 1; i < daysInMonth; i ++){
     if(screen == i){
-      background(255,192,203);
-      fill(0);
-      rect(10,10,47,27);
-      fill(255);
-      rect(10,10,45,25);
-      textSize(12);
-      fill(0);
-      text("Home", 50,30);
+        background(0);
+  rectMode(CORNERS);
+  noStroke();
+  fill(255);
+  rect(X1, Y1, X2, Y2);
+  
+  X1 = 50; 
+  Y1 = 50;
+  X2 = width - 50;  
+  Y2 = height - Y1;
+
+ 
+
+  fill(255);
+  
+ 
       table = loadTable(i + ".csv", "header");
-      for (TableRow row : table.rows()){
-        if(rowCounter < table.getRowCount()){
-          String date = row.getString("date");
-          String temp= row.getString("temp");
-          rowCounter++;
-          println(date+" "+temp);
-        }
-      }
+      
+      Temp = new float[table.getRowCount()];
+      time = new int[table.getRowCount()];
+
+  int m = 0;
+  for (TableRow row : table.rows()) {
+    Temp[m] = row.getFloat("temp");
+    time[m] = row.getInt("date");
+    m++;
+    drawXLabels();
+    drawYLabels();
+  }
+  minTemp = min(Temp);
+  maxTemp = max(Temp);
+ 
+  drawGraph(Temp, minTemp, maxTemp);
     }
-   }
+  }
+  
+  rectMode(CORNER);
+  strokeWeight(3);
+  fill(0);
+  rect(10,10,47,27);
+  fill(255);
+  rect(10,10,45,25);
+  textSize(12);
+  fill(0);
+  textAlign(LEFT);
+  text("Home", 18,26);
   update();
 }
 
@@ -248,3 +284,43 @@ boolean overDay(float x, float y, float width, float height)  {
     return false;
   }
 }
+
+void drawGraph(float[] data, float yMin, float yMax) 
+{
+  stroke(0);
+  strokeWeight(3);
+  beginShape();
+  for (int i=0; i < data.length; i++) {
+    float x = map(i, 0, data.length-1, X1, X2);
+    float y = map(data[i], yMin, yMax, Y2, Y1);
+    vertex(x, y);
+  }
+  endShape();
+} 
+void drawYLabels () 
+{
+  fill(255);
+  textSize(12);
+  textAlign(LEFT);
+  stroke(255);
+ for (float i=minTemp; i <= maxTemp; i += 1) {
+    float y = map(i, minTemp, maxTemp, Y2, Y1);
+    text(floor(i), X1-30, y);
+    line(X1, y, X1-5, y);
+  }
+  textSize(16);
+  text("Temp", X1-45, height/12);
+} 
+
+void drawXLabels() {
+  fill(255);
+  stroke(0);
+  textSize(13);
+  textAlign(RIGHT);
+
+
+  
+  textSize(16);
+  textAlign(CENTER, TOP);
+  text("Time(0~23)", width/1.1, Y2+20);
+} 
