@@ -10,11 +10,11 @@ void setup()
 
   X1 = 50; 
   Y1 = 50;
-  X2 = width - 50; 
+  X2 = width - 50;  
   Y2 = height - Y1;
 
   smooth();
-  Table myTable = loadTable("2.csv", "header");
+  Table myTable = loadTable("21.csv", "header");
 
  
   Temp = new float[myTable.getRowCount()];
