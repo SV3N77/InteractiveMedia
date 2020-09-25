@@ -24,7 +24,8 @@ color currentColour;
 
 int mousePosition;
 Table table;
-
+String[] lines;
+int index = 0;
 //Gifs
 WI wi;
 
@@ -150,6 +151,8 @@ void draw(){
           String temp= row.getString("temp");
           rowCounter++;
           println(date+" "+temp);
+  
+  
       }
     }
   }
