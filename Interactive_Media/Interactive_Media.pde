@@ -52,12 +52,14 @@ void setup(){
   }
   homeOver = false;
   
+  ac = new AudioContext();
   frameRate(frameSpeed);
   wi = new WI();
   wi.sunnyIcon();
   wi.rainyIcon();
   wi.thunderIcon();
   wi.clearIcon();
+  //sound();
 }
 
 void draw(){
@@ -211,12 +213,12 @@ void mousePressed() {
     if(dayOver[i]){
       //background(i*10, i*10, i*10);
       screen = i+1;
-      //sound();
+      sound();
     }
   }
   if(overDay(10,10,45,25)){
     screen = 0;
-    //sound();
+    sound();
   }
 }
 
@@ -229,14 +231,21 @@ void update() {
 }
 
 void sound(){
-  String audioFileName = "/data/button.mp3";
+  
+  //String audioFileName = "/Users/Tobia/Desktop/2nd year/2nd Sem/Interactive Media/Processing stuff/Week 7/Samples/Nylon_Guitar/Clean_A_harm.wav";
+  //SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
+  String audioFileName = "/Users/Tobia/Documents/GitHub/InteractiveMedia/Interactive_Media/data/button.mp3";
   SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
   
+  Envelope rate = new Envelope(ac,5);
+  player.setRate(rate);
+  
   Panner p = new Panner(ac,0);
-  Gain g = new Gain(ac, 2, 0.5);
+  Gain g = new Gain(ac, 2, 1);
   
   p.addInput(player);
   ac.out.addInput(g);
+  g.addInput(p);
   ac.start();
 }
 
