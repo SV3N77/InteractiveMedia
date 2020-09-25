@@ -35,10 +35,16 @@ float[] Temp;
 float minTemp, maxTemp;
 int[] time;
 
+float[] Rain;
+float minRain, maxRain;
+int[]timeRain;
+
 float X1, Y1, X2, Y2;
+float A1, B1, A2, B2;
 
 int mousePosition;
 Table table;
+Table table2;
 
 //Gifs
 WI wi;
@@ -199,36 +205,73 @@ void draw(){
   
   for(int i = 1; i < daysInMonth + 1; i ++){
     if(screen == i){
-        background(0);
-  rectMode(CORNERS);
-  noStroke();
-  fill(255);
-  rect(X1, Y1, X2, Y2);
-  
-  X1 = 50; 
-  Y1 = 50;
-  X2 = width - 50;  
-  Y2 = height - Y1;
-
-  fill(255);
- 
-  table = loadTable(i + ".csv", "header");
       
-  Temp = new float[table.getRowCount()];
-  time = new int[table.getRowCount()];
-
-  int m = 0;
-  for (TableRow row : table.rows()) {
-    Temp[m] = row.getFloat("temp");
-    time[m] = row.getInt("date");
-    m++;
-    drawXLabels();
-    drawYLabels();
-  }
-  minTemp = min(Temp);
-  maxTemp = max(Temp);
- 
-  drawGraph(Temp, minTemp, maxTemp);
+      //Temp Graph
+      background(0);
+      rectMode(CORNERS);
+      noStroke();
+      fill(255);
+      rect(X1, Y1, X2, Y2);
+      
+      X1 = 50; 
+      Y1 = 50;
+      X2 = width - 50;  
+      Y2 = height - Y1;
+    
+      fill(255);
+     
+      table = loadTable(i + ".csv", "header");
+          
+      Temp = new float[table.getRowCount()];
+      time = new int[table.getRowCount()];
+    
+      int m = 0;
+      for (TableRow row : table.rows()) {
+        Temp[m] = row.getFloat("temp");
+        time[m] = row.getInt("date");
+        m++;
+        drawXLabels();
+        drawYLabels();
+      }
+      
+      minTemp = min(Temp);
+      maxTemp = max(Temp);
+     
+      drawGraph(Temp, minTemp, maxTemp);
+      
+      //Rain Graph
+      
+      background(0);
+      rectMode(CORNERS);
+      noStroke();
+      fill(255);
+      rect(A1, B1, A2, B2);
+      
+      A1 = 50; 
+      B1 = 50;
+      A2 = width - 50;  
+      B2 = height - B1;
+    
+      fill(255);
+     
+      table = loadTable(i + "1.csv", "header");
+          
+      Temp = new float[table.getRowCount()];
+      time = new int[table.getRowCount()];
+    
+      int p = 0;
+      for (TableRow row : table.rows()) {
+        Rain[p] = row.getFloat("rain");
+        timeRain[p] = row.getInt("date");
+        p++;
+        drawXLabels();
+        drawYLabels();
+      }
+      
+      minRain = min(Rain);
+      maxRain = max(Rain);
+     
+      drawGraph(Temp, minRain, maxRain);
     }
   }
   
