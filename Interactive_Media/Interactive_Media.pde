@@ -264,7 +264,7 @@ void draw(){
       for (TableRow row : table.rows()) {
 
         Solar[p] = row.getFloat("Solar");
-        timeSolar[p] = row.getInt("date");
+        timeSolar[p] = row.getInt("Date");
         p++;
         drawXLabels();
         drawYRainLabels();
