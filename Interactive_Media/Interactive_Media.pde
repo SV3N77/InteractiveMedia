@@ -229,7 +229,7 @@ void update() {
 }
 
 void sound(){
-  String audioFileName = "/audio/button.wav";
+  String audioFileName = "/data/button.mp3";
   SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
   
   Panner p = new Panner(ac,0);
