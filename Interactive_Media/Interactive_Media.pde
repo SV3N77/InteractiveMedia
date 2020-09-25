@@ -239,7 +239,7 @@ void draw(){
      
       drawLineGraph(Temp, minTemp, maxTemp);
       
-      //Rain Graph
+      //Solar Graph
       
       rectMode(CORNER);
       noStroke();
