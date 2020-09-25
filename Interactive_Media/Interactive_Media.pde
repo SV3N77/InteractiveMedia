@@ -141,7 +141,14 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
-    rect(680,580,20,20);
+  fill(0);
+  rect(10,10,47,27);
+  fill(255);
+  rect(10,10,45,25);
+  textSize(12);
+  fill(0);
+  text("Home", 50,30);
+  
     image(wi.clear[frameCount%14], posX+130, posY/2 -25, iconX, iconY); //Day 1 icon
     image(wi.clear[frameCount%14], posX+135+boxWidth, posY/2 -25, iconX, iconY); //Day 2 icon
     image(wi.clear[frameCount%14], posX+140 + 2*boxWidth, posY/2 -25, iconX, iconY); //Day 3 icon
@@ -178,7 +185,13 @@ void draw(){
    for(int i = 1; i < daysInMonth; i ++){
     if(screen == i){
       background(255,192,203);
-      rect(680,580,20,20);
+      fill(0);
+      rect(10,10,47,27);
+      fill(255);
+      rect(10,10,45,25);
+      textSize(12);
+      fill(0);
+      text("Home", 50,30);
       table = loadTable(i + ".csv", "header");
       for (TableRow row : table.rows()){
         if(rowCounter < table.getRowCount()){
@@ -201,7 +214,7 @@ void mousePressed() {
       //sound();
     }
   }
-  if(overDay(680,580,20,20)){
+  if(overDay(10,10,45,25)){
     screen = 0;
     //sound();
   }
@@ -215,17 +228,17 @@ void update() {
   }
 }
 
-//void sound(){
-//  String audioFileName = "/data/button.wav";
-//  SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
+void sound(){
+  String audioFileName = "/audio/button.wav";
+  SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
   
-//  Panner p = new Panner(ac,0);
-//  Gain g = new Gain(ac, 2, 0.5);
+  Panner p = new Panner(ac,0);
+  Gain g = new Gain(ac, 2, 0.5);
   
-//  p.addInput(player);
-//  ac.out.addInput(g);
-//  ac.start();
-//}
+  p.addInput(player);
+  ac.out.addInput(g);
+  ac.start();
+}
 
 boolean overDay(float x, float y, float width, float height)  {
   if (mouseX >= x && mouseX <= x+width && 
