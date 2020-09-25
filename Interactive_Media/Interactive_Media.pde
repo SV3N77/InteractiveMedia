@@ -1,3 +1,9 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 import java.util.*;
 import beads.*;
 import java.util.Arrays;
@@ -32,7 +38,8 @@ Table table;
 WI wi;
 
 //Audio
-AudioContext ac;
+Minim minim;
+AudioPlayer player;
 
 float posX = 200, posY = 400;
 float iconX = 45, iconY = iconX;
@@ -52,14 +59,12 @@ void setup(){
   }
   homeOver = false;
   
-  ac = new AudioContext();
   frameRate(frameSpeed);
   wi = new WI();
   wi.sunnyIcon();
   wi.rainyIcon();
   wi.thunderIcon();
   wi.clearIcon();
-  //sound();
 }
 
 void draw(){
@@ -83,7 +88,6 @@ void draw(){
   if(screen ==0){
   
     background(102);
-    //background(currentColour);
     fill(255);
     stroke(204);
     textSize(42);
@@ -211,7 +215,6 @@ void draw(){
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
     if(dayOver[i]){
-      //background(i*10, i*10, i*10);
       screen = i+1;
       sound();
     }
@@ -231,22 +234,10 @@ void update() {
 }
 
 void sound(){
-  
-  //String audioFileName = "/Users/Tobia/Desktop/2nd year/2nd Sem/Interactive Media/Processing stuff/Week 7/Samples/Nylon_Guitar/Clean_A_harm.wav";
-  //SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
-  String audioFileName = "/Users/Tobia/Documents/GitHub/InteractiveMedia/Interactive_Media/data/button.mp3";
-  SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
-  
-  Envelope rate = new Envelope(ac,5);
-  player.setRate(rate);
-  
-  Panner p = new Panner(ac,0);
-  Gain g = new Gain(ac, 2, 1);
-  
-  p.addInput(player);
-  ac.out.addInput(g);
-  g.addInput(p);
-  ac.start();
+  minim = new Minim(this);
+  player = minim.loadFile("/data/button.mp3");
+  player.play();
+  player.setGain(-30);
 }
 
 boolean overDay(float x, float y, float width, float height)  {
