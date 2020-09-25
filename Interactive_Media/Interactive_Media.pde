@@ -267,7 +267,7 @@ void draw(){
         timeSolar[p] = row.getInt("Date");
         p++;
         drawXLabels();
-        drawYRainLabels();
+        drawYSolarLabels();
       }
       
       minSolar = min(Solar);
@@ -340,7 +340,7 @@ void drawLineGraph(float[] data, float yMin, float yMax)
   endShape();
 }
 
-void drawRainGraph(float[] data, float yMin, float yMax) 
+void drawSolarGraph(float[] data, float yMin, float yMax) 
 {
   stroke(0);
   strokeWeight(3);
@@ -351,22 +351,10 @@ void drawRainGraph(float[] data, float yMin, float yMax)
     vertex(x, y);
   }
   endShape();
+  
 }
 
-void drawBarGraph(float[] data){
-  stroke(0);
-  strokeWeight(3);
-  //float x = width/2 + 100;
-  //float y = height/3 - 150;
-  float delta = width*0.8/data.length;
-  float w = delta*0.8;
-  for (float value : data) {
-    float h = map(value, 0, 100, 0, height); 
-    fill(102);
-    rect(A1, B1-h, w, h);
-    A1 = A1 + delta;
-  }
-}
+
 
 void drawYLabels () 
 {
@@ -383,19 +371,19 @@ void drawYLabels ()
   text("Temp", X1-45, height/12);
 } 
 
-void drawYRainLabels () 
+void drawYSolarLabels () 
 {
   fill(255);
   textSize(12);
   textAlign(LEFT);
   stroke(255);
- for (float i=minSolar; i <= maxSolar; i += 1) {
+ for (float i=minSolar; i <= maxSolar; i += 15) {
     float y = map(i, minSolar, maxSolar, B2, B1);
     text(floor(i), A1-30, y);
     line(A1, y, A1-5, y);
   }
   textSize(16);
-  text("Rain", A1-40, height/12 - 5);
+  text("SolarR", A1-40, height/12 - 5);
 }
 
 void drawXLabels() {
@@ -406,5 +394,5 @@ void drawXLabels() {
   
   textSize(16);
   textAlign(CENTER, TOP);
-  text("Time(0~23)", width - 75, Y2+20);
+  text("Time(0~23)", width - 75, Y2 + 55);
 } 
