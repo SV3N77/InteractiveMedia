@@ -14,7 +14,7 @@ void setup()
   Y2 = height - Y1;
 
   smooth();
-  Table myTable = loadTable("1.csv", "header");
+  Table myTable = loadTable("2.csv", "header");
 
  
   Temp = new float[myTable.getRowCount()];
