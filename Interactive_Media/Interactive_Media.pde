@@ -1,4 +1,7 @@
 import java.util.*;
+import beads.*;
+import java.util.Arrays;
+
 //Initialise variables
 int screen = 0;
 int monthDays = 31;
@@ -27,6 +30,9 @@ Table table;
 
 //Gifs
 WI wi;
+
+//Audio
+AudioContext ac;
 
 float posX = 200, posY = 400;
 float iconX = 45, iconY = iconX;
@@ -192,10 +198,12 @@ void mousePressed() {
     if(dayOver[i]){
       //background(i*10, i*10, i*10);
       screen = i+1;
+      //sound();
     }
   }
   if(overDay(680,580,20,20)){
     screen = 0;
+    //sound();
   }
 }
 
@@ -205,8 +213,19 @@ void update() {
       dayOver[i] = true;
     }
   }
-  
 }
+
+//void sound(){
+//  String audioFileName = "/data/button.wav";
+//  SamplePlayer player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
+  
+//  Panner p = new Panner(ac,0);
+//  Gain g = new Gain(ac, 2, 0.5);
+  
+//  p.addInput(player);
+//  ac.out.addInput(g);
+//  ac.start();
+//}
 
 boolean overDay(float x, float y, float width, float height)  {
   if (mouseX >= x && mouseX <= x+width && 
