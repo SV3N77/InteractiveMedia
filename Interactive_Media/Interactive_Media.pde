@@ -1,4 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 import java.util.*;
+import beads.*;
+import java.util.Arrays;
+
 //Initialise variables
 int screen = 0;
 int monthDays = 31;
@@ -6,7 +15,7 @@ String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Fr
 int currentMonth;
 int currentYear = 2020;
 float plannerWidth = 0;
-
+int rowCounter = 0;
 float margin = 50;
 float topLabelMargin = 100;
 float calendarWidth = width - plannerWidth - (margin * 2);
@@ -23,6 +32,18 @@ color rectHighlight, circleHighlight;
 color currentColour;
 
 int mousePosition;
+Table table;
+
+//Gifs
+WI wi;
+
+//Audio
+Minim minim;
+AudioPlayer player;
+
+float posX = 200, posY = 400;
+float iconX = 45, iconY = iconX;
+int frameSpeed = 10;
 
 //Gifs
 WI wi;
@@ -74,7 +95,6 @@ void draw(){
   if(screen ==0){
   
     background(102);
-    //background(currentColour);
     fill(255);
     stroke(204);
     textSize(42);
@@ -170,6 +190,13 @@ void update() {
     }
   }
   
+}
+
+void sound(){
+  minim = new Minim(this);
+  player = minim.loadFile("/data/button.mp3");
+  player.play();
+  player.setGain(-30);
 }
 
 boolean overDay(float x, float y, float width, float height)  {
