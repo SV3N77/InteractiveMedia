@@ -48,11 +48,11 @@ Minim minim;
 AudioPlayer player;
 
 float posX = 200, posY = 400;
-float iconX = 45, iconY = iconX;
+float iconX = 55, iconY = iconX;
 int frameSpeed = 10;
 
 void setup(){
-  size(700, 600);
+  size(1000, 600);
   smooth();
   textFont(createFont("Georgia", 12));
   textAlign(CENTER, CENTER);
@@ -163,24 +163,24 @@ void draw(){
   fill(0);
   text("Home", 50,30);
   
-    image(wi.clear[frameCount%14], posX+130, posY/2 -25, iconX, iconY); //Day 1 icon
-    image(wi.clear[frameCount%14], posX+135+boxWidth, posY/2 -25, iconX, iconY); //Day 2 icon
-    image(wi.clear[frameCount%14], posX+140 + 2*boxWidth, posY/2 -25, iconX, iconY); //Day 3 icon
-    image(wi.sunny[frameCount%19], posX+145 + 3*boxWidth, posY/2 -25, iconX, iconY); //Day 4 icon
-    image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -15 + boxHeight, iconX, iconY); //Day 5 icon
-    image(wi.sunny[frameCount%19], posX/2 - 25 + boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 6 icon
-    image(wi.rainy[frameCount%4], posX/2 - 20 + 2*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 7 icon
-    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 8 icon
-    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 9 icon
-    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 10 icon
-    image(wi.sunny[frameCount%19], posX/2 + 6*boxWidth, posY/2 -15 + boxHeight, iconX, iconY); //Day 11 icon
-    image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 12 icon
-    image(wi.rainy[frameCount%4], posX/2 - 25 + boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 13 icon
-    image(wi.thunderstorm[frameCount%10], posX/2 - 20 + 2*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 14 icon
-    image(wi.sunny[frameCount%19], posX/2 - 15 + 3*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 15 icon
-    image(wi.sunny[frameCount%19], posX/2 - 10 + 4*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 16 icon
-    image(wi.sunny[frameCount%19], posX/2 - 5 + 5*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 17 icon
-    image(wi.clear[frameCount%14], posX/2 + 6*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 18 icon
+    image(wi.clear[frameCount%14], posX+150 + boxWidth, posY/2 -30, iconX, iconY); //Day 1 icon
+    image(wi.clear[frameCount%14], posX+155+ 2*boxWidth, posY/2 -30, iconX, iconY); //Day 2 icon
+    image(wi.clear[frameCount%14], posX+160 + 3*boxWidth, posY/2 -30, iconX, iconY); //Day 3 icon
+    image(wi.sunny[frameCount%19], posX+165 + 4*boxWidth, posY/2 -30, iconX, iconY); //Day 4 icon
+    image(wi.clear[frameCount%14], posX/2 - 12, posY/2 -25 + boxHeight, iconX, iconY); //Day 5 icon
+    image(wi.sunny[frameCount%19], posX/2 - 7 + boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 6 icon
+    image(wi.rainy[frameCount%4], posX/2 - 2 + 2*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 7 icon
+    image(wi.sunny[frameCount%19], posX/2 + 3 +3*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 8 icon
+    image(wi.sunny[frameCount%19], posX/2 + 8 + 4*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 9 icon
+    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 10 icon
+    image(wi.sunny[frameCount%19], posX/2 + 18 + 6*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 11 icon
+    image(wi.clear[frameCount%14], posX/2 - 12, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 12 icon
+    image(wi.rainy[frameCount%4], posX/2 - 7 + boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 13 icon
+    image(wi.thunderstorm[frameCount%10], posX/2 - 2 + 2*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 14 icon
+    image(wi.sunny[frameCount%19], posX/2 + 3 + 3*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 15 icon
+    image(wi.sunny[frameCount%19], posX/2 + 8 + 4*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 16 icon
+    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 17 icon
+    image(wi.clear[frameCount%14], posX/2 + 18 +6*boxWidth, posY/2 -10 + 2*boxHeight, iconX, iconY); //Day 18 icon
     image(wi.clear[frameCount%14], posX/2 - 30, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 19 icon
     image(wi.clear[frameCount%14], posX/2 - 25 + boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 20 icon
     image(wi.sunny[frameCount%19], posX/2 - 20 + 2*boxWidth, posY/2 -5 + 3*boxHeight, iconX, iconY); //Day 21 icon
@@ -197,7 +197,7 @@ void draw(){
 
   }
   
-  for(int i = 1; i < daysInMonth; i ++){
+  for(int i = 1; i < daysInMonth + 1; i ++){
     if(screen == i){
         background(0);
   rectMode(CORNERS);
@@ -210,15 +210,12 @@ void draw(){
   X2 = width - 50;  
   Y2 = height - Y1;
 
- 
-
   fill(255);
-  
  
-      table = loadTable(i + ".csv", "header");
+  table = loadTable(i + ".csv", "header");
       
-      Temp = new float[table.getRowCount()];
-      time = new int[table.getRowCount()];
+  Temp = new float[table.getRowCount()];
+  time = new int[table.getRowCount()];
 
   int m = 0;
   for (TableRow row : table.rows()) {
