@@ -46,8 +46,6 @@ int mousePosition;
 Table table;
 Table table2;
 
-
-
 //Gifs
 WI wi;
 
