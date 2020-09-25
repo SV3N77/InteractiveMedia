@@ -1,13 +1,4 @@
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
 import java.util.*;
-import beads.*;
-import java.util.Arrays;
-
 //Initialise variables
 int screen = 0;
 int monthDays = 31;
@@ -22,6 +13,8 @@ float calendarWidth = width - plannerWidth - (margin * 2);
 float calendarHeight = height - (margin * 2) - topLabelMargin;
 float spacing = 5;
 
+ 
+
 float [] dayX;
 float [] dayY;
 boolean [] dayOver;
@@ -31,28 +24,26 @@ float dayHeight = 0;
 color rectHighlight, circleHighlight;
 color currentColour;
 
-float[] Temp;
-float minTemp, maxTemp;
-int[] time;
-
-float X1, Y1, X2, Y2;
+ 
 
 int mousePosition;
-Table table;
+Table table1;
+
+ 
 
 //Gifs
 WI wi;
 
-//Audio
-Minim minim;
-AudioPlayer player;
+ 
 
 float posX = 200, posY = 400;
-float iconX = 55, iconY = iconX;
+float iconX = 45, iconY = iconX;
 int frameSpeed = 10;
 
+ 
+
 void setup(){
-  size(1000, 600);
+  size(700, 600);
   smooth();
   textFont(createFont("Georgia", 12));
   textAlign(CENTER, CENTER);
@@ -70,8 +61,9 @@ void setup(){
   wi.sunnyIcon();
   wi.rainyIcon();
   wi.thunderIcon();
-  wi.clearIcon();
 }
+
+ 
 
 void draw(){
   String monthName = "July";
@@ -92,13 +84,12 @@ void draw(){
   dayWidth = boxWidth;
   dayHeight = boxHeight;
   if(screen ==0){
-    textAlign(CENTER, CENTER);
-    rectMode(CORNER);
+  
     background(102);
+    //background(currentColour);
     fill(255);
     stroke(204);
     textSize(42);
-    strokeWeight(3);
     
     text(monthName + " " + currentYear, (width - plannerWidth) / 2, margin + topLabelMargin / 10 * 3);
     fill(204);
@@ -155,108 +146,49 @@ void draw(){
     
     rect(width - plannerWidth, margin + topLabelMargin, plannerWidth - margin, height - margin * 2 - topLabelMargin);
   }
-  fill(0);
-  rect(10,10,47,27);
-  fill(255);
-  rect(10,10,45,25);
-  textSize(12);
-  fill(0);
-  text("Home", 50,30);
-  
-    image(wi.clear[frameCount%14], posX+150 + boxWidth, posY/2 -30, iconX, iconY); //Day 1 icon
-    image(wi.clear[frameCount%14], posX+155+ 2*boxWidth, posY/2 -30, iconX, iconY); //Day 2 icon
-    image(wi.clear[frameCount%14], posX+160 + 3*boxWidth, posY/2 -30, iconX, iconY); //Day 3 icon
-    image(wi.sunny[frameCount%19], posX+165 + 4*boxWidth, posY/2 -30, iconX, iconY); //Day 4 icon
-    image(wi.clear[frameCount%14], posX/2 - 12, posY/2 -25 + boxHeight, iconX, iconY); //Day 5 icon
-    image(wi.sunny[frameCount%19], posX/2 - 7 + boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 6 icon
-    image(wi.rainy[frameCount%4], posX/2 - 2 + 2*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 7 icon
-    image(wi.sunny[frameCount%19], posX/2 + 3 +3*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 8 icon
-    image(wi.sunny[frameCount%19], posX/2 + 8 + 4*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 9 icon
-    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 10 icon
-    image(wi.sunny[frameCount%19], posX/2 + 18 + 6*boxWidth, posY/2 -25 + boxHeight, iconX, iconY); //Day 11 icon
-    image(wi.clear[frameCount%14], posX/2 - 12, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 12 icon
-    image(wi.rainy[frameCount%4], posX/2 - 7 + boxWidth, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 13 icon
-    image(wi.thunderstorm[frameCount%10], posX/2 - 2 + 2*boxWidth, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 14 icon
-    image(wi.sunny[frameCount%19], posX/2 + 3 + 3*boxWidth, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 15 icon
-    image(wi.sunny[frameCount%19], posX/2 + 8 + 4*boxWidth, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 16 icon
-    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 -20 + 2*boxHeight, iconX, iconY); //Day 17 icon
-    image(wi.clear[frameCount%14], posX/2 + 18 +6*boxWidth, posY/2 - 20 + 2*boxHeight, iconX, iconY); //Day 18 icon
-    image(wi.clear[frameCount%14], posX/2 - 12, posY/2 -15 + 3*boxHeight, iconX, iconY); //Day 19 icon
-    image(wi.clear[frameCount%14], posX/2 - 7 + boxWidth, posY/2 -15 + 3*boxHeight, iconX, iconY); //Day 20 icon
-    image(wi.sunny[frameCount%19], posX/2 - 2 + 2*boxWidth, posY/2 -15 + 3*boxHeight, iconX, iconY); //Day 21 icon
-    image(wi.sunny[frameCount%19], posX/2 + 3 + 3*boxWidth, posY/2 - 15 + 3*boxHeight, iconX, iconY); //Day 22 icon
-    image(wi.clear[frameCount%14], posX/2 + 8 + 4*boxWidth, posY/2 - 15 + 3*boxHeight, iconX, iconY); //Day 23 icon
-    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 - 15 + 3*boxHeight, iconX, iconY); //Day 24 icon
-    image(wi.sunny[frameCount%19], posX/2 + 18 + 6*boxWidth, posY/2 - 15 + 3*boxHeight, iconX, iconY); //Day 25 icon
-    image(wi.thunderstorm[frameCount%10], posX/2 - 12, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 26 icon
-    image(wi.rainy[frameCount%4], posX/2 - 7 + boxWidth, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 27 icon
-    image(wi.rainy[frameCount%4], posX/2 - 2 + 2*boxWidth, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 28 icon
-    image(wi.clear[frameCount%14], posX/2 + 3 + 3*boxWidth, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 29 icon
-    image(wi.sunny[frameCount%19], posX/2 + 8 + 4*boxWidth, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 30 icon
-    image(wi.sunny[frameCount%19], posX/2 + 13 + 5*boxWidth, posY/2 - 10 + 4*boxHeight, iconX, iconY); //Day 31 icon
-
+    rect(680,580,20,20);
+    image(wi.sunny[frameCount%19], posX+130, posY/2 -25, iconX, iconY);
+    //image(wi.rainy[frameCount%4], posX+100, posY/2, iconX, iconY);
+    //image(wi.thunderstorm[frameCount%10], posX, posY/3, iconX, iconY);
   }
-  
-  for(int i = 1; i < daysInMonth + 1; i ++){
+   
+   for(int i = 1; i < daysInMonth; i ++){
     if(screen == i){
-        background(0);
-  rectMode(CORNERS);
-  noStroke();
-  fill(255);
-  rect(X1, Y1, X2, Y2);
-  
-  X1 = 50; 
-  Y1 = 50;
-  X2 = width - 50;  
-  Y2 = height - Y1;
-
-  fill(255);
- 
-  table = loadTable(i + ".csv", "header");
-      
-  Temp = new float[table.getRowCount()];
-  time = new int[table.getRowCount()];
-
-  int m = 0;
-  for (TableRow row : table.rows()) {
-    Temp[m] = row.getFloat("temp");
-    time[m] = row.getInt("date");
-    m++;
-    drawXLabels();
-    drawYLabels();
-  }
-  minTemp = min(Temp);
-  maxTemp = max(Temp);
- 
-  drawGraph(Temp, minTemp, maxTemp);
+      background(255,192,203);
+      rect(680,580,20,20);
+      table1 = loadTable(i + "1.csv", "header");
+      for (TableRow row : table1.rows()){
+        if(rowCounter < table1.getRowCount()){
+          String Date = row.getString("Date");
+          String rain= row.getString("rain");
+          rowCounter++;
+          println(Date+" "+rain);
+        }
+      }
     }
   }
-  
-  rectMode(CORNER);
-  strokeWeight(3);
-  fill(0);
-  rect(10,10,47,27);
-  fill(255);
-  rect(10,10,45,25);
-  textSize(12);
-  fill(0);
-  textAlign(LEFT);
-  text("Home", 18,26);
+ 
+
+ 
+
   update();
 }
+
+ 
 
 void mousePressed() {
   for(int i = 0; i < monthDays; i ++){
     if(dayOver[i]){
+      //background(i*10, i*10, i*10);
       screen = i+1;
-      sound();
     }
   }
-  if(overDay(10,10,45,25)){
+  if(overDay(680,580,20,20)){
     screen = 0;
-    sound();
   }
 }
+
+ 
 
 void update() {
   for(int i = 0; i < monthDays; i ++){
@@ -264,14 +196,10 @@ void update() {
       dayOver[i] = true;
     }
   }
+  
 }
 
-void sound(){
-  minim = new Minim(this);
-  player = minim.loadFile("/data/button.mp3");
-  player.play();
-  player.setGain(-30);
-}
+ 
 
 boolean overDay(float x, float y, float width, float height)  {
   if (mouseX >= x && mouseX <= x+width && 
@@ -281,43 +209,3 @@ boolean overDay(float x, float y, float width, float height)  {
     return false;
   }
 }
-
-void drawGraph(float[] data, float yMin, float yMax) 
-{
-  stroke(0);
-  strokeWeight(3);
-  beginShape();
-  for (int i=0; i < data.length; i++) {
-    float x = map(i, 0, data.length-1, X1, X2);
-    float y = map(data[i], yMin, yMax, Y2, Y1);
-    vertex(x, y);
-  }
-  endShape();
-} 
-void drawYLabels () 
-{
-  fill(255);
-  textSize(12);
-  textAlign(LEFT);
-  stroke(255);
- for (float i=minTemp; i <= maxTemp; i += 1) {
-    float y = map(i, minTemp, maxTemp, Y2, Y1);
-    text(floor(i), X1-30, y);
-    line(X1, y, X1-5, y);
-  }
-  textSize(16);
-  text("Temp", X1-45, height/12);
-} 
-
-void drawXLabels() {
-  fill(255);
-  stroke(0);
-  textSize(13);
-  textAlign(RIGHT);
-
-
-  
-  textSize(16);
-  textAlign(CENTER, TOP);
-  text("Time(0~23)", width/1.1, Y2+20);
-} 
