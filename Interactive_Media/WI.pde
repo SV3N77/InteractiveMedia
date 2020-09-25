@@ -63,4 +63,6 @@ class WI {
     clear[12] = loadImage("clear/clear9.gif");
     clear[13] = loadImage("clear/clear6.gif");
   }
+  
+ 
 }

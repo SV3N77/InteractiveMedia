@@ -46,6 +46,8 @@ int mousePosition;
 Table table;
 Table table2;
 
+
+
 //Gifs
 WI wi;
 
@@ -273,7 +275,7 @@ void draw(){
       minSolar = min(Solar);
       maxSolar = max(Solar);
      
-      drawLineGraph(Solar, minSolar, maxSolar);
+      drawSolarGraph(Solar, minSolar, maxSolar);
     }
   }
   
@@ -346,9 +348,9 @@ void drawSolarGraph(float[] data, float yMin, float yMax)
   strokeWeight(3);
   beginShape();
   for (int i=0; i < data.length; i++) {
-    float x = map(i, 0, data.length-1, A1, A2);
+    float x = map(i, 0, data.length, 600, 150);
     float y = map(data[i], yMin, yMax, B2, B1);
-    vertex(x, y);
+    vertex(x + 350, y);
   }
   endShape();
   
@@ -396,3 +398,5 @@ void drawXLabels() {
   textAlign(CENTER, TOP);
   text("Time(0~23)", width - 75, Y2 + 55);
 } 
+
+ 
